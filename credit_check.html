@@ -1,0 +1,85 @@
+<!DOCKTYPE html>
+<html>
+<head>
+    <title>check credit by Dejavan.ir</title>
+</head>
+<body>
+<style>
+    body{
+        direction: rtl;
+        font-family: Tahoma;
+    }
+    .container{
+        margin: auto;
+        max-width: 300px;
+        padding: 50px 0;
+    }
+    form input{
+        padding: 7px;
+        border: 1px solid #eaeaea;
+    }
+    form input[type='number']{
+        width: 80%;
+    }
+    p span{
+        direction: ltr;
+    }
+    form input[type='button']{
+        width: 18%;
+    }
+    p{
+        text-align: center;
+    }
+</style>
+<div class="container">
+    <form>
+        <input type="number" />
+        <input type="button" value="ارسال" />
+    </form>
+    <p id="showCredit">مقدار موجودی شما:<span></span> ریال است.</p>
+</div>
+<script>
+    let userAccount = {
+    id : 23,
+    fullName : "amir javanmir",
+    inCome : 0,
+    outCome : 0
+}
+
+let getInfoAccount = function (account){
+        console.log(account.inCome,account.outCome);
+        let res = (account.outCome < 0) ?  (account.inCome - Math.abs(account.outCome)): account.inCome;
+        return res;
+}
+
+let addIncome = function(account, amount){
+    account.inCome += amount;
+}
+
+let addOutcome = function(account, amount){
+    account.outCome += amount;
+}
+
+let showCredit = document.querySelector("#showCredit span");
+let inputVal = document.querySelector("form input[type=number]");
+
+showCredit.innerHTML = getInfoAccount(userAccount);
+
+document.querySelector("form input[type=button]").addEventListener('click',function (){
+    if(inputVal.value != ''){
+        if(inputVal.value < 0){
+            addOutcome(userAccount, parseInt(inputVal.value));
+            console.log(userAccount.outCome);
+            showCredit.innerHTML = getInfoAccount(userAccount);
+        }
+        if(inputVal.value > 0){
+            addIncome(userAccount, parseInt(inputVal.value));
+            showCredit.innerHTML = getInfoAccount(userAccount);
+        }
+    }else{
+        alert("لطفا مقدار عددی وارد کنید");
+    }
+});
+</script>
+</body>
+</html>
