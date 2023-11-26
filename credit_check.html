@@ -5,7 +5,7 @@ Released on: september 16, 2022
 <!DOCKTYPE html>
 <html>
 <head>
-    <title>check credit by Dejavan.ir</title>
+    <title>check credit</title>
 </head>
 <body>
 <style>
@@ -38,9 +38,9 @@ Released on: september 16, 2022
 <div class="container">
     <form>
         <input type="number" />
-        <input type="button" value="ارسال" />
+        <input type="button" value="send" />
     </form>
-    <p id="showCredit">مقدار موجودی شما:<span></span> ریال است.</p>
+    <p id="showCredit">Your balance is <span></span> rials.</p>
 </div>
 <script>
     let userAccount = {
@@ -81,7 +81,7 @@ document.querySelector("form input[type=button]").addEventListener('click',funct
             showCredit.innerHTML = getInfoAccount(userAccount);
         }
     }else{
-        alert("لطفا مقدار عددی وارد کنید");
+        alert("Please enter a numeric value");
     }
 });
 </script>
